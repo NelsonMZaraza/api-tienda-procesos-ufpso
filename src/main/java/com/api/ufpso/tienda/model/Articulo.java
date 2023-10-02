@@ -3,6 +3,8 @@ package com.api.ufpso.tienda.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Entity
 public class Articulo {
@@ -15,6 +17,6 @@ public class Articulo {
     private String precio;
     private String fechaIngreso;
     @ManyToOne
-    @JoinColumn(name="categoria_id")
+    @JoinColumn(name="articulo_id")
     private Categoria categoria;
 }
