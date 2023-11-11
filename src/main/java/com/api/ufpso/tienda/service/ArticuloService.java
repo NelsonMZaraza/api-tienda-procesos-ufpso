@@ -1,7 +1,10 @@
 package com.api.ufpso.tienda.service;
 
+import com.api.ufpso.tienda.exception.NotFoundException;
 import com.api.ufpso.tienda.model.Articulo;
+import com.api.ufpso.tienda.model.Categoria;
 import com.api.ufpso.tienda.repository.ArticuloRepository;
+import com.api.ufpso.tienda.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +16,27 @@ public class ArticuloService {
     @Autowired
     private ArticuloRepository articuloRepository;
 
-    public Articulo createArticulo(Articulo articuloReq){
+    @Autowired
+    private CategoriaService categoriaService;
+
+    public Articulo createArticulo(Articulo articuloReq, Long idCategoria){
+        Categoria categoria = categoriaService.getCategoriaById(idCategoria);
+        articuloReq.setCategoria(categoria);
         return articuloRepository.save(articuloReq);
     }
+
     public Articulo getArticuloById(Long id){
-        return articuloRepository.findById(id).get();
+        Optional<Articulo> articulo=articuloRepository.findById(id);
+        if (articulo.isEmpty()){
+            throw new NotFoundException(Constants.ARTICULO_NOT_FOUND.getMessage());
+        }
+        return articulo.get();
     }
 
     public Articulo updateArticulo(Articulo articuloReq, Long id){
         Optional<Articulo> articuloBd = articuloRepository.findById(id);
         if(articuloBd.isEmpty()){
-            return null;
+            throw new NotFoundException(Constants.ARTICULO_NOT_FOUND.getMessage());
         }
         articuloBd.get().setNombre(articuloReq.getNombre());
         articuloBd.get().setDescripcion(articuloReq.getDescripcion());
