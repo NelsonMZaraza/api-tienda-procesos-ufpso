@@ -1,7 +1,9 @@
 package com.api.ufpso.tienda.controller;
 
+import com.api.ufpso.tienda.model.Articulo;
 import com.api.ufpso.tienda.model.Categoria;
 import com.api.ufpso.tienda.service.CategoriaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +24,13 @@ public class CategoriaController {
 
     /*Crear*/
     @PostMapping("categorias")
-    public ResponseEntity<Categoria> create (@RequestBody Categoria categoria){
+    public ResponseEntity<Categoria> create (@Valid @RequestBody Categoria categoria){
         return new ResponseEntity<>((categoriaService.createCategoria(categoria)), HttpStatus.CREATED);
     }
 
     /*Actualizar*/
     @PutMapping ("categorias/{id}")
-    public ResponseEntity<Categoria> update(@RequestBody Categoria categoria, @PathVariable Long id){
+    public ResponseEntity<Categoria> update(@Valid @RequestBody Categoria categoria, @PathVariable Long id){
         return new ResponseEntity<>(categoriaService.updateCategoria(categoria,id), HttpStatus.OK);
     }
 
