@@ -29,7 +29,7 @@ public class User {
     private String document;
 
     @NotNull(message = "Phone number is required")
-    @Size(min=810, max = 10, message = "phone with 10 characters")
+    @Size(min=10, max = 10, message = "phone with 10 characters")
     private String phone;
 
     @NotNull(message = "email is required")
