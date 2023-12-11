@@ -23,4 +23,9 @@ public class Categoria {
     @JsonIgnore
     @OneToMany(mappedBy = "categoria")
     List<Articulo> articuloList;
+    public Categoria() {
+    }
+    public Categoria(String id) {
+        this.id = Long.parseLong(id);
+    }
 }

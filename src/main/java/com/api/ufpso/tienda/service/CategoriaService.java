@@ -1,7 +1,6 @@
 package com.api.ufpso.tienda.service;
 
 import com.api.ufpso.tienda.exception.NotFoundException;
-import com.api.ufpso.tienda.model.Articulo;
 import com.api.ufpso.tienda.model.Categoria;
 import com.api.ufpso.tienda.repository.CategoriaRepository;
 import com.api.ufpso.tienda.util.Constants;

@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -29,7 +30,7 @@ public class Articulo {
     private String precio;
 
     @NotNull(message = "fecha Ingreso is required")
-    private String fechaIngreso;
+    private LocalDate fechaIngreso;
 
     @ManyToOne
     @JoinColumn(name="articulo_id", referencedColumnName = "id")

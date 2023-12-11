@@ -33,6 +33,4 @@ public class AddressController {
     public ResponseEntity findAll(){
         return ResponseEntity.ok(addressService.findAllAddress());
     }
-
-
 }

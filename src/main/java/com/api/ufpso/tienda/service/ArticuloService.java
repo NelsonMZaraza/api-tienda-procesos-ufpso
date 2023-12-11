@@ -1,10 +1,15 @@
 package com.api.ufpso.tienda.service;
 
+import com.api.ufpso.tienda.dto.AuthResponse;
+import com.api.ufpso.tienda.exception.AlreadyExistsException;
 import com.api.ufpso.tienda.exception.NotFoundException;
 import com.api.ufpso.tienda.model.Articulo;
 import com.api.ufpso.tienda.model.Categoria;
+import com.api.ufpso.tienda.model.Role;
+import com.api.ufpso.tienda.model.User;
 import com.api.ufpso.tienda.repository.ArticuloRepository;
 import com.api.ufpso.tienda.util.Constants;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
